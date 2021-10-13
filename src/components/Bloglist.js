@@ -1,4 +1,4 @@
-const Bloglist = ({blogs,title}) => {
+const Bloglist = ({blogs,title,handleDelete}) => {
 
     // Or we use (props) => {} and then, but here is used destructuring
     // const blogs = props.blogs
@@ -11,6 +11,7 @@ const Bloglist = ({blogs,title}) => {
                 <div className="blog-preview" key={blog.id}>
                     <h2>{blog.title}</h2>
                     <p>by {blog.author}</p>
+                    <button onClick={()=>handleDelete(blog.id)}>Delete</button>
                 </div>
             ))}
         </div>

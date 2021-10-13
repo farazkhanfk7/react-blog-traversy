@@ -9,10 +9,16 @@ const Home = () => {
         { title : "Cars ", body:"LOrem ipsum..", author:"faraz", id:3},
     ])
 
+    // we can also pass function as props
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter((blog)=>blog.id !== id);
+        setblogs(newBlogs);
+    }
+
     return (
         <div className="home">
-            <Bloglist blogs={blogs} title="All Blogs" />
-            <Bloglist blogs={blogs.filter((blogs)=>blogs.author==="faraz")} title="Faraz's Blogs" />
+            <Bloglist blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>
+            <Bloglist blogs={blogs.filter((blog)=>blog.author==="faraz")} title="Faraz's Blogs" handleDelete={handleDelete}/>
         </div>
         );
 }
