@@ -2,19 +2,20 @@ import { useState } from 'react';
 
 const Home = () => {
 
-    const [name, setname] = useState('Faraz')
-
-    const handleClick = () => {
-        setname('Hasan')
-    }
+    const [blogs, setblogs] = useState([
+        { title : "New Website", body:"LOrem ipsum..", author:"faraz", id:1},
+        { title : "Sports", body:"manchester vs..", author:"hasan", id:2},
+        { title : "Cars ", body:"LOrem ipsum..", author:"batcypher", id:3},
+    ])
 
     return (
         <div className="home">
-            <h1>Homepage</h1>
-            <h4>{ name }</h4>
-            <button onClick={handleClick}>Change Name</button>
-            {/* Incase you want to pass parameter to event handler function
-            <button onClick={()=>handleClick('faraz')}>Click</button> */}
+            {blogs.map((blog)=>(
+                <div className="blog-preview" key={blog.id}>
+                    <h2>{blog.title}</h2>
+                    <p>by {blog.author}</p>
+                </div>
+            ))}
         </div>
         );
 }
