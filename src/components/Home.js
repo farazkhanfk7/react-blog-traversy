@@ -4,14 +4,19 @@ import Bloglist from './Bloglist';
 const Home = () => {
 
     const [blogs, setblogs] = useState(null)
-
+    const [pending, setpending] = useState(true)
+ 
     useEffect(()=>{
-        fetch("http://localhost:8000/blogs")
+        // using settimeout here just to demonstrate the time server takes to fetch
+        setTimeout(() => {
+            fetch("http://localhost:8000/blogs")
             .then((res) => {
                 return res.json()
             }).then(data => {
                 setblogs(data)
+                setpending(false)
             })
+        }, 1000);
     })
 
     // useEffect(()=>{
@@ -21,6 +26,7 @@ const Home = () => {
  
     return (
         <div className="home">
+            { pending && <div>Loading...</div> }
             {blogs && <Bloglist blogs={blogs} title="All Blogs"/>}
         </div>
         );
