@@ -14,7 +14,6 @@ const Bloglist = ({blogs,title}) => {
                     <Link to={`/blogs/${blog.id}`}>
                         <h2>{blog.title}</h2>
                         <p>by {blog.author}</p>
-                        <button>Delete</button>
                     </Link>
                 </div>
             ))}
